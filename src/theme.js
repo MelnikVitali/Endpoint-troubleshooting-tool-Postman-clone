@@ -17,6 +17,13 @@ const theme = createTheme({
         ].join(','),
     },
     components: {
+        MuiBackdrop: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: "rgba(0,0,0,0.6)",
+                },
+            },
+        },
         MuiCssBaseline: {
             styleOverrides: {
                 '@global': {

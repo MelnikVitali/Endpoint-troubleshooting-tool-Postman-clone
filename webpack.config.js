@@ -22,7 +22,7 @@ module.exports = {
         open: true,
         compress: true,
         hot: true,
-        port: 8000
+        port: 8080
     },
     module: {
         rules: [
@@ -42,5 +42,5 @@ module.exports = {
         minimize: false,
         splitChunks: optimization.splitChunks,
     },
-    devtool: false
+    devtool: false,
 };

@@ -1,12 +1,5 @@
 # This app is built with React.js  
 
-### Integrated into Bubble.io on the page - test_for_student.
-
-### The application displays messages with test tasks for the current user on the page, forms the logic for executing tasks and saving the results to the database.
-
-The compiled files for the production assembly are located in the REACT_COMPONENTS_FILES tabular database.
-under the names: TEST_PAGE_VENDOR and TEST_PAGE_MAIN.
-
 # Getting Started with Create React App
 
 ## Available Scripts
