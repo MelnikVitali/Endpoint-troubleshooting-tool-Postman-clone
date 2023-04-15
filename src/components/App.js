@@ -4,7 +4,12 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import prettyBytes from 'pretty-bytes';
 import {
-    Box, Button, Dialog, DialogActions, DialogContent, useMediaQuery,
+    Box,
+    Button,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    useMediaQuery,
 } from '@mui/material';
 import { keyValuePairsToObjects } from '../utils/keyValuePairsToObjects';
 import ResponseBlock from './ResponseBlock';
@@ -14,7 +19,6 @@ import { styles } from './styles';
 
 const App = () => {
     const matchesXS = useMediaQuery('(max-width:518px)');
-
     const [openDialog, setOpenDialog] = React.useState(false);
     const [url, setUrl] = useState('');
     const [loading, setLoading] = useState(false);
@@ -24,12 +28,7 @@ const App = () => {
     const [cookie, setCookie] = useState('');
     const [response, setResponse] = useState({});
     const [responseHeaders, setResponseHeaders] = useState({});
-    // const [doc, setDoc] = useState('{\n\t\n}');
-    const [doc, setDoc] = useState('{\n' +
-        '\t"title": "foo",\n' +
-        '  "body": "bar",\n' +
-        '  "userId": 1\n' +
-        '}');
+    const [reqBody, setReqBody] = useState('{\n  \n}');
 
     const currentURL = document.querySelector('#root').getAttribute('data-url');
 
@@ -57,7 +56,8 @@ const App = () => {
     const updateEndTime = (response) => {
         if (response !== undefined) {
             response.customData = response.customData || {};
-            response.customData.time = new Date().getTime() - response.config.customData.startTime;
+            response.customData.time =
+                new Date().getTime() - response.config.customData.startTime;
             return response;
         }
     };
@@ -69,7 +69,7 @@ const App = () => {
     const sendRequest = (data) => {
         setLoading(true);
 
-        const requestBody = doc.toString();
+        const requestBody = reqBody.toString();
 
         let body;
 
@@ -87,12 +87,17 @@ const App = () => {
             url: data.url,
             method: data.method,
             params: keyValuePairsToObjects(data.query_data),
-            headers: keyValuePairsToObjects(data.header_data),
+            headers: {
+                'Content-Type':
+                    'application/x-www-form-urlencoded; charset=UTF-8',
+                // 'Access-Control-Allow-Origin': '*',
+                // 'Access-Control-Allow-Methods':
+                //     'GET, PUT, POST, DELETE, OPTIONS',
+                ...keyValuePairsToObjects(data.header_data),
+            },
             data: body || {},
             validateStatus: () => true,
         };
-
-        console.log('ReqOptions', options);
 
         axios(options)
             .then((response) => {
@@ -106,34 +111,39 @@ const App = () => {
                     setSize(
                         prettyBytes(
                             JSON.stringify(response.data).length +
-                            JSON.stringify(response.headers).length
+                                JSON.stringify(response.headers).length
                         )
                     );
                     if (document.cookie) setCookie(document.cookie);
                     if (response.status.toString()[0] === '2') {
-                        toast.success(`successfully returned response status:${response.status}`);
+                        toast.success(
+                            `successfully returned response status:${response.status}`
+                        );
                     } else {
                         toast.error(`response status:${response.status}`);
                     }
                 }
             })
             .catch((error) => {
-                    setLoading(false);
-                    console.log('error response', error);
-                    setStatus('');
-                    setTime('');
-                    setCookie('');
-                    setSize('');
-                    setResponse({});
-                    setResponseHeaders({});
-                    toast.error(`${error?.message}`);
-                }
-            );
+                setLoading(false);
+                console.log('error response', error);
+                setStatus('');
+                setTime('');
+                setCookie('');
+                setSize('');
+                setResponse({});
+                setResponseHeaders({});
+                toast.error(`${error?.message}`);
+            });
     };
 
     return (
-        <div className="app">
-            <Button variant="outlined" onClick={handleClickOpen} sx={{margin: '20px 50px'}}>
+        <div className='app'>
+            <Button
+                variant='outlined'
+                onClick={handleClickOpen}
+                sx={{ margin: '20px 50px' }}
+            >
                 Open dialog
             </Button>
             <Dialog
@@ -148,42 +158,72 @@ const App = () => {
                             maxWidth: '1400px',
                             overflowY: 'scroll',
                             margin: `${matchesXS ? '6px' : '32px'}`,
-                            width: `${matchesXS ? '100%' : 'calc(100% - 64px)'}`,
-                            maxHeight: `${matchesXS ? 'calc(100% - 12px)' : 'calc(100% - 64px)'}`,
+                            width: `${
+                                matchesXS ? '100%' : 'calc(100% - 64px)'
+                            }`,
+                            maxHeight: `${
+                                matchesXS
+                                    ? 'calc(100% - 12px)'
+                                    : 'calc(100% - 64px)'
+                            }`,
                         },
                     },
                 }}
             >
-                <DialogContent
-                    sx={styles.dialogContainer}
-                >
-                    <Box component="header" sx={styles.dialogHeader}>
-                        <h3 color="secondary">Endpoint troubleshooting tool</h3>
+                <DialogContent sx={styles.dialogContainer}>
+                    <Box component='header' sx={styles.dialogHeader}>
+                        <h3 color='secondary'>Endpoint troubleshooting tool</h3>
                     </Box>
                     <Formik
                         initialValues={{
-                            url: url || '  ', query_data: [{}], header_data: [{}], method: 'GET',
+                            url: url || '  ',
+                            query_data: [{}],
+                            header_data: [{}],
+                            method: 'GET',
                         }}
                         onSubmit={(details) => {
                             sendRequest(details);
                         }}
                     >
-                        {({values, errors, isValid, touched, handleChange}) => (
+                        {({
+                            values,
+                            errors,
+                            isValid,
+                            touched,
+                            handleChange,
+                        }) => (
                             <Form>
-                                <RequestHeader url={url} errors={errors} isValid={isValid} touched={touched}
-                                               handleChange={handleChange} loading={loading}
+                                <RequestHeader
+                                    url={url}
+                                    errors={errors}
+                                    isValid={isValid}
+                                    touched={touched}
+                                    handleChange={handleChange}
+                                    loading={loading}
                                 />
-                                <RequestTabs values={values} doc={doc} setDoc={setDoc}/>
+                                <RequestTabs
+                                    values={values}
+                                    reqBody={reqBody}
+                                    setReqBody={setReqBody}
+                                />
                             </Form>
                         )}
                     </Formik>
-                    <ResponseBlock status={status} time={time} size={size} cookie={cookie} response={response}
-                                   responseHeaders={responseHeaders}/>
+                    <ResponseBlock
+                        status={status}
+                        time={time}
+                        size={size}
+                        cookie={cookie}
+                        response={response}
+                        responseHeaders={responseHeaders}
+                    />
                     <DialogActions>
-                        <Button onClick={() => handleClose()}>
+                        <Button
+                            variant='container'
+                            onClick={() => handleClose()}
+                        >
                             Cancel
                         </Button>
-                        <Button onClick={() => handleClose()}>Save</Button>
                     </DialogActions>
                 </DialogContent>
             </Dialog>

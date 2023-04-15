@@ -14,9 +14,9 @@ const root = createRoot(container);
 root.render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
-            <CssBaseline/>
+            <CssBaseline />
             <ToastContainer
-                position="top-right"
+                position='top-right'
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
@@ -25,9 +25,9 @@ root.render(
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
-                theme="light"
+                theme='light'
             />
-                <App/>
+            <App />
         </ThemeProvider>
     </React.StrictMode>
 );
