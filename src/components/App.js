@@ -217,6 +217,7 @@ const App = () => {
                         cookie={cookie}
                         response={response}
                         responseHeaders={responseHeaders}
+                        loading={loading}
                     />
                     <DialogActions>
                         <Button

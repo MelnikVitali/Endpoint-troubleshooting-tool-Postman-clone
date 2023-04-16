@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Tab, Tabs } from '@mui/material';
+import { Box, Tab, Tabs, CircularProgress } from '@mui/material';
 import CodeMirror from '@uiw/react-codemirror';
 import { githubLight } from '@uiw/codemirror-theme-github';
 import { json } from '@codemirror/lang-json';
@@ -12,6 +12,7 @@ const ResponseBlock = ({
     response,
     cookie,
     responseHeaders,
+    loading,
 }) => {
     const [valueTabResponse, setValueTabResponse] = useState(0);
 
@@ -63,11 +64,15 @@ const ResponseBlock = ({
                     aria-labelledby={`simple-Response-${0}`}
                 >
                     <Box component='div' sx={styles.responseData}>
-                        <CodeMirror
-                            value={JSON.stringify(response, null, 2)}
-                            theme={githubLight}
-                            extensions={[json()]}
-                        />
+                        {loading ? (
+                            <CircularProgress />
+                        ) : (
+                            <CodeMirror
+                                value={JSON.stringify(response, null, 2)}
+                                theme={githubLight}
+                                extensions={[json()]}
+                            />
+                        )}
                     </Box>
                 </Box>
                 <Box
