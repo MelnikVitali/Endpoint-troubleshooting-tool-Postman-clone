@@ -91,8 +91,9 @@ const App = () => {
                 'Content-Type':
                     'application/x-www-form-urlencoded; charset=UTF-8',
                 // 'Access-Control-Allow-Origin': '*',
+                // 'Content-Type': 'application/json',
                 // 'Access-Control-Allow-Methods':
-                //     'GET, PUT, POST, DELETE, OPTIONS',
+                // 'GET, PUT, POST, DELETE, OPTIONS',
                 ...keyValuePairsToObjects(data.header_data),
             },
             data: body || {},
