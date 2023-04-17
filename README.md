@@ -1,4 +1,15 @@
-# Getting Started with React App
+# Endpoint troubleshooting tool
+
+## Technology Stack
+
+-   React with React Hooks
+-   React styles & libraries: Material-UI
+-   Zustand
+-   CodeMirror
+-   axios
+-   react-hot-toast
+-   immer
+-   pretty-bytes
 
 ## Available Scripts
 
