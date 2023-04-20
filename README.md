@@ -11,6 +11,8 @@
 -   immer
 -   pretty-bytes
 
+## [Deployed App on Netlify](https://postman-app.netlify.app/)
+
 ## Available Scripts
 
 In the project directory, you can run:
