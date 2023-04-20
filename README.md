@@ -1,4 +1,4 @@
-# Endpoint troubleshooting tool
+# Endpoint troubleshooting tool (Postman clone)
 
 ## Technology Stack
 
