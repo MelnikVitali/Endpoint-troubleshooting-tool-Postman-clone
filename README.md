@@ -3,6 +3,7 @@
 ## Technology Stack
 
 -   React with React Hooks
+-   TypeScript
 -   React styles & libraries: Material-UI
 -   Zustand
 -   CodeMirror
