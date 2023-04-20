@@ -11,7 +11,7 @@
 -   immer
 -   pretty-bytes
 
-## [Deployed App on Netlify](https://postman-app.netlify.app/)
+### [Link to deployed App on Netlify](https://postman-app.netlify.app/)
 
 ## Available Scripts
 
