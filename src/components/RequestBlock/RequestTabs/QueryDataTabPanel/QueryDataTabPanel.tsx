@@ -7,8 +7,16 @@ import { TextField } from 'formik-mui';
 interface QueryDataTabPanelProps {
   values: {
     url: string;
-    query_data: object[];
-    header_data: object[];
+    query_data: {
+      [x: string]: any;
+      key: string,
+      value: string;
+    };
+    header_data: {
+      [x: string]: any;
+      key: string,
+      value: string;
+    };
     method: string;
   };
 }
@@ -18,8 +26,7 @@ const QueryDataTabPanel: FC<QueryDataTabPanelProps> = ({ values }) => {
     <FieldArray name='query_data'>
       {(arrayHelpers) => (
         <div>
-          {/* @ts-ignore */}
-          {values.query_data.map((info: Record<string, string>, index: number) => {
+          {values.query_data.map((info: { key: string; value: string; }, index: number) => {
             return (
               <Box component='div' sx={styles.keyValueBox} key={index}>
                 <Field

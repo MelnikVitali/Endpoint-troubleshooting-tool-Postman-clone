@@ -8,7 +8,11 @@ interface HeaderDataTabPanelProps {
   values: {
     url: string;
     query_data: object[];
-    header_data: object[];
+    header_data: {
+      [x: string]: any;
+      key: string,
+      value: string;
+    };
     method: string;
   };
 }
@@ -18,8 +22,7 @@ const HeaderDataTabPanel: FC<HeaderDataTabPanelProps> = ({ values }) => {
     <FieldArray name='header_data'>
       {(arrayHelpers) => (
         <div>
-          {/* @ts-ignore */}
-          {values.header_data.map((info: Record<string, string>, index) => {
+          {values.header_data.map((info: { key: string; value: string; }, index: number) => {
             return (
               <Box component='div' sx={styles.keyValueBox} key={index}>
                 <Field

@@ -69,7 +69,7 @@ export const usePostmanStore = create<PostmanState & PostmanActions>()(
           return request;
         });
 
-        const updateEndTime = (response: AxiosResponse) => {
+        const updateEndTime = (response: AxiosResponse): any => {
           if (response !== undefined) {
             response.customData = response.customData || {};
             if (response.config.customData?.startTime) {
@@ -80,7 +80,7 @@ export const usePostmanStore = create<PostmanState & PostmanActions>()(
             return response;
           }
         };
-        //@ts-ignore
+
         axios.interceptors.response.use(updateEndTime, (e) => {
           return Promise.reject(updateEndTime(e.response));
         });
