@@ -1,8 +1,9 @@
-# Endpoint troubleshooting tool
+# Endpoint troubleshooting tool (Postman clone)
 
 ## Technology Stack
 
 -   React with React Hooks
+-   TypeScript
 -   React styles & libraries: Material-UI
 -   Zustand
 -   CodeMirror
@@ -10,6 +11,8 @@
 -   react-hot-toast
 -   immer
 -   pretty-bytes
+
+### [Link to deployed App on Netlify](https://postman-app.netlify.app/)
 
 ## Available Scripts
 
