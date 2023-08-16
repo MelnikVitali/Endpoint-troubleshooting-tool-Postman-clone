@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Field, FieldArray } from 'formik';
 import { Box, Button } from '@mui/material';
 import { styles } from './styles';
@@ -8,11 +8,7 @@ interface HeaderDataTabPanelProps {
   values: {
     url: string;
     query_data: object[];
-    header_data: {
-      [x: string]: any;
-      key: string,
-      value: string;
-    };
+    header_data: object[];
     method: string;
   };
 }
@@ -22,7 +18,7 @@ const HeaderDataTabPanel: FC<HeaderDataTabPanelProps> = ({ values }) => {
     <FieldArray name='header_data'>
       {(arrayHelpers) => (
         <div>
-          {values.header_data.map((info: { key: string; value: string; }, index: number) => {
+          {values.header_data.map((info: any, index) => {
             return (
               <Box component='div' sx={styles.keyValueBox} key={index}>
                 <Field

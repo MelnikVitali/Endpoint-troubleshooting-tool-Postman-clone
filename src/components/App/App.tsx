@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, Button, Dialog, DialogActions, DialogContent, useMediaQuery } from '@mui/material';
 import { styles } from './styles';
 import { PostmanActions, PostmanState, usePostmanStore } from '../../store/usePostmanStore';

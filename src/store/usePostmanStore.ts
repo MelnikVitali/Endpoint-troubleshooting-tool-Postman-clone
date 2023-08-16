@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import axios, { InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 import { immer } from 'zustand/middleware/immer';
-import { devtools, persist } from 'zustand/middleware';
-import toast, { Toaster } from 'react-hot-toast';
+import { devtools } from 'zustand/middleware';
+import toast from 'react-hot-toast';
 import prettyBytes from 'pretty-bytes';
 import { keyValuePairsToObjects } from '../utils/keyValuePairsToObjects';
 

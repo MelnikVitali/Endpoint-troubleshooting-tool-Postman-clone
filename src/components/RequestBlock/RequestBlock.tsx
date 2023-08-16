@@ -1,4 +1,3 @@
-import React from 'react';
 import { Formik, Form } from 'formik';
 import { PostmanActions, PostmanState, usePostmanStore } from '../../store/usePostmanStore';
 import RequestHeader from './RequestHeader/RequestHeader';
