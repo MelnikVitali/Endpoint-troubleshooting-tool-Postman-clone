@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Box, Button, Dialog, DialogActions, DialogContent, useMediaQuery } from '@mui/material';
 import { styles } from './styles';
-import { PostmanActions, PostmanState, usePostmanStore } from '../../store/usePostmanStore';
+import { PostmanActions, usePostmanStore } from '../../store/usePostmanStore';
 import RequestBlock from '../RequestBlock/RequestBlock';
 import ResponseBlock from '../ResponseBlock/ResponseBlock';
 

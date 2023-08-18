@@ -7,8 +7,8 @@ import { TextField } from 'formik-mui';
 interface HeaderDataTabPanelProps {
   values: {
     url: string;
-    query_data: object[];
-    header_data: object[];
+    query_data: { key?: string; value?: string; [key: string]: any }[];
+    header_data: { key?: string; value?: string; [key: string]: any }[];
     method: string;
   };
 }
@@ -18,7 +18,7 @@ const HeaderDataTabPanel: FC<HeaderDataTabPanelProps> = ({ values }) => {
     <FieldArray name='header_data'>
       {(arrayHelpers) => (
         <div>
-          {values.header_data.map((info: any, index) => {
+          {values.header_data.map((info, index) => {
             return (
               <Box component='div' sx={styles.keyValueBox} key={index}>
                 <Field
