@@ -134,7 +134,7 @@ export const usePostmanStore = create<PostmanState & PostmanActions>()(
             }));
 
             if (response.status.toString()[0] === '2') {
-              toast.success(`Successfully returned response status:${response.status}`);
+              toast.success(`Successfully returned response status: ${response.status}`);
             } else {
               toast.error(`Response status: ${response.status}`);
             }
