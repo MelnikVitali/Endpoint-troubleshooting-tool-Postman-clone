@@ -1,4 +1,3 @@
-import { pxToRem } from './utils/pxToRem';
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -26,30 +25,30 @@ const theme = createTheme({
     },
     MuiCssBaseline: {
       styleOverrides: {
-        '@global': {
-          html: {
-            boxSizing: 'border-box',
-            width: '100%',
-            height: '100%',
-          },
-          'html, body': {
-            outline: 'none',
-          },
-          body: {
-            margin: '0 auto',
-          },
-          '#root': {
-            minHeight: '100%',
-            height: '100vh',
-            width: '100%',
-          },
-          ':focus': {
-            outline: 'none',
-          },
-          a: {
-            textDecoration: 'none !important',
-          },
-        },
+        // '@global': {
+        //   html: {
+        //     boxSizing: 'border-box',
+        //     width: '100%',
+        //     height: '100%',
+        //   },
+        //   'html, body': {
+        //     outline: 'none',
+        //   },
+        //   body: {
+        //     margin: '0 auto',
+        //   },
+        //   '#root': {
+        //     minHeight: '100%',
+        //     height: '100vh',
+        //     width: '100%',
+        //   },
+        //   ':focus': {
+        //     outline: 'none',
+        //   },
+        //   a: {
+        //     textDecoration: 'none !important',
+        //   },
+        // },
       },
     },
   },

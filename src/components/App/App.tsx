@@ -4,6 +4,7 @@ import { styles } from './styles';
 import { PostmanActions, usePostmanStore } from '../../store/usePostmanStore';
 import RequestBlock from '../RequestBlock/RequestBlock';
 import ResponseBlock from '../ResponseBlock/ResponseBlock';
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
   const matchesXS = useMediaQuery('(max-width:518px)');
@@ -54,6 +55,7 @@ const App = () => {
           },
         }}
       >
+        <Toaster />
         <DialogContent sx={styles.dialogContainer}>
           <Box component='header' sx={styles.dialogHeader}>
             <h3 color='secondary'>Endpoint troubleshooting tool</h3>
