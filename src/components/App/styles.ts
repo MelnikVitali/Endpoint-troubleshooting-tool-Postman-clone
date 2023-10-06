@@ -6,7 +6,6 @@ export const styles = {
       maxWidth: pxToRem(1536),
       minWidth: '360px',
       margin: 'auto',
-
       '& .MuiDialog-paper': {
         maxWidth: pxToRem(1400),
         overflowY: 'scroll',
@@ -60,6 +59,7 @@ export const styles = {
   dialogContainer: {
     padding: `${pxToRem(30)} ${pxToRem(22)} ${pxToRem(30)} ${pxToRem(30)}`,
     paddingTop: 0,
+    fontFamily: 'Roboto, sans-serif',
   },
   dialogHeader: {
     willChange: 'transform',
@@ -68,6 +68,7 @@ export const styles = {
     color: '#1565c0',
     margin: 0,
     backgroundColor: 'transparent',
+    fontFamily: 'Roboto, sans-serif',
   },
   dialogTitle: {
     padding: 0,
@@ -76,5 +77,6 @@ export const styles = {
     textAlign: 'left',
     fontSize: pxToRem(24),
     fontWeight: 800,
+    fontFamily: 'Roboto, sans-serif',
   },
 };
