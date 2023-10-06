@@ -22,7 +22,7 @@ const ResponseBlock = () => {
   };
 
   return (
-    <Box>
+    <Box sx={{ fontFamily: 'Roboto, sans-serif' }}>
       <Box component='h3' sx={{ margin: '12px 0 8px' }}>
         Response
       </Box>

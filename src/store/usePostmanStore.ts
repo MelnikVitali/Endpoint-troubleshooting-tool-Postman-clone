@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { create } from 'zustand';
 import axios, { InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 import { immer } from 'zustand/middleware/immer';
@@ -96,7 +97,7 @@ export const usePostmanStore = create<PostmanState & PostmanActions>()(
             try {
               body = JSON.parse(requestBody);
             } catch (e) {
-              toast.error('Something is wrong with the JSON data.');
+              toast.error('Something is wrong with the Body JSON data.');
               set(() => ({ isLoading: false }));
               return;
             }

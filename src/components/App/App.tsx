@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Box, Button, Dialog, DialogActions, DialogContent, useMediaQuery } from '@mui/material';
-import { styles } from './styles';
 import { PostmanActions, usePostmanStore } from '../../store/usePostmanStore';
 import RequestBlock from '../RequestBlock/RequestBlock';
 import ResponseBlock from '../ResponseBlock/ResponseBlock';
-import { Toaster } from 'react-hot-toast';
+import { styles } from './styles';
 
 const App = () => {
   const matchesXS = useMediaQuery('(max-width:518px)');
@@ -18,7 +17,6 @@ const App = () => {
 
   useEffect(() => {
     if (currentURL) {
-      console.log('currentURL -->', currentURL);
       setUrl(currentURL);
     }
   }, []);
@@ -33,9 +31,9 @@ const App = () => {
   };
 
   return (
-    <div className='app'>
-      <Button variant='outlined' onClick={handleClickOpen} sx={{ margin: '20px 50px' }}>
-        Open dialog
+    <div style={{ border: '1px solid rgba(25, 118, 210, 0.5)' }}>
+      <Button variant='outlined' onClick={handleClickOpen} sx={{ margin: '8px 12px' }}>
+        Open Postman
       </Button>
       <Dialog
         open={openDialog}
@@ -55,7 +53,6 @@ const App = () => {
           },
         }}
       >
-        <Toaster />
         <DialogContent sx={styles.dialogContainer}>
           <Box component='header' sx={styles.dialogHeader}>
             <h3 color='secondary'>Endpoint troubleshooting tool</h3>

@@ -7,5 +7,6 @@ export const styles = {
     border: '1px solid rgba(0,0,0,0.23)',
     borderRadius: '3px',
     padding: '4px',
+    fontSize: '14px',
   },
 };

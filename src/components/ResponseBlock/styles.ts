@@ -1,6 +1,7 @@
 export const styles = {
   responseStatusBox: {
     display: 'flex',
+    fontFamily: 'Roboto, sans-serif',
   },
   responseStatusItem: {
     marginRight: '24px',
@@ -14,6 +15,8 @@ export const styles = {
     borderRadius: '3px',
     padding: '4px',
     // marginBottom: '20px',
+    fontFamily: 'Roboto, sans-serif',
+    fontSize: '14px',
   },
   statusColorOk: {
     color: '#388e3c',
@@ -23,12 +26,14 @@ export const styles = {
   },
   wrapperTabs: {
     marginTop: '3px',
+    fontFamily: 'Roboto, sans-serif',
   },
   wrapperTab: {
     paddingTop: '12px',
   },
   tab: {
     textTransform: 'none !important',
+    fontFamily: 'Roboto, sans-serif',
     '&::active': {
       border: '1px solid #fff',
     },

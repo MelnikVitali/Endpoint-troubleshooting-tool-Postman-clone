@@ -1,16 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { StyledEngineProvider, createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import CssBaseline from '@mui/material/CssBaseline';
-import ScopedCssBaseline from '@mui/material/ScopedCssBaseline';
-
-// import theme from './theme';
 import App from './components/App/App';
+import Toaster from './components/Toaster/Toaster';
 
-const theme = createTheme({
-  palette: {},
+const container = document.querySelector('#root');
+const shadowContainer = container?.attachShadow({ mode: 'open' });
+const emotionRoot = document.createElement('style');
+const shadowRootElement = document.createElement('div');
+shadowContainer?.appendChild(emotionRoot);
+shadowContainer?.appendChild(shadowRootElement);
+
+const cache = createCache({
+  key: 'css',
+  prepend: true,
+  container: emotionRoot,
+});
+
+const shadowTheme = createTheme({
   typography: {
     fontFamily: [
       'Roboto',
@@ -19,61 +29,40 @@ const theme = createTheme({
       '"Segoe UI"',
       '"Helvetica Neue"',
       'Arial',
+      'sans-serif',
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
-      'sans-serif',
     ].join(','),
   },
   components: {
-    MuiBackdrop: {
-      styleOverrides: {
-        root: {
-          // backgroundColor: 'rgba(0,0,0,0.6)',
-        },
+    MuiPopover: {
+      defaultProps: {
+        container: shadowRootElement,
       },
     },
-    MuiCssBaseline: {
-      styleOverrides: {
-        // '@global': {
-        //   html: {
-        //     boxSizing: 'border-box',
-        //     width: '100%',
-        //     height: '100%',
-        //   },
-        //   'html, body': {
-        //     outline: 'none',
-        //   },
-        //   body: {
-        //     margin: '0 auto',
-        //   },
-        //   '#root': {
-        //     minHeight: '100%',
-        //     height: '100vh',
-        //     width: '100%',
-        //   },
-        //   ':focus': {
-        //     outline: 'none',
-        //   },
-        //   a: {
-        //     textDecoration: 'none !important',
-        //   },
-        // },
+    MuiPopper: {
+      defaultProps: {
+        container: shadowRootElement,
+      },
+    },
+    MuiModal: {
+      defaultProps: {
+        container: shadowRootElement,
       },
     },
   },
 });
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  // ReactDOM.createRoot(shadowRootElement).render(
+// ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(shadowRootElement).render(
   <React.StrictMode>
-    {/* <CacheProvider value={cache}> */}
-    <ThemeProvider theme={theme}>
-      <ScopedCssBaseline>
+    <CacheProvider value={cache}>
+      <ThemeProvider theme={shadowTheme}>
         <CssBaseline />
+        <Toaster />
         <App />
-      </ScopedCssBaseline>
-    </ThemeProvider>
-    {/* </CacheProvider> */}
+      </ThemeProvider>
+    </CacheProvider>
   </React.StrictMode>,
 );
