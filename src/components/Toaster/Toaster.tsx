@@ -1,5 +1,4 @@
-import React from 'react';
-import { Toaster as LibToaster, toast, ToastBar } from 'react-hot-toast';
+import { Toaster as LibToaster, } from 'react-hot-toast';
 
 const Toaster = () => {
   return (

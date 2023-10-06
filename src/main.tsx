@@ -4,8 +4,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Toaster } from 'react-hot-toast';
-import theme from './theme';
 import App from './components/App/App';
 import Toaster from './components/Toaster/Toaster';
 
